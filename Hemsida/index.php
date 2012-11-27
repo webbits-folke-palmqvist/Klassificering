@@ -9,13 +9,13 @@ switch ($page) {
 		$show_page = "home";
 		$title = "Hem";
 		break;
-	case 'OmOss':
+	case 'Om-oss':
 		$show_page = "about";
 		$title = "Om oss";
 		break;
-	case 'Kontakt':
-		$show_page = "contact";
-		$title = "Kontakt";
+	case 'Logga-in':
+		$show_page = "login";
+		$title = "Logga in";
 		break;
 	default:
 		$show_page = "404";
@@ -25,7 +25,7 @@ switch ($page) {
 ?>
 <html>
 	<head>
-		<title>Rapidio UF · <?php echo $title; ?></title>
+		<title>Online Note · <?php echo $title; ?></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<link href='assets/css/bootstrap.css' rel='stylesheet' type='text/css'>
 		<link href='assets/css/stylesheet.css' rel='stylesheet' type='text/css'>
@@ -35,13 +35,21 @@ switch ($page) {
 		<div class="container">
 			<div class="navbar navbar-inverse">
 				<div class="navbar-inner">
-					<a class="brand" href="?page=Hem">Rapidio UF</a>
+					<a class="brand" href="?page=Hem">Online Note</a>
 					<ul class="nav">
-						<li><a href="?page=Hem">Hem</a></li>
+						<li><a href="?page=Om-oss">Om oss</a></li>
 						<li class="divider-vertical"></li>
-						<li><a href="?page=OmOss">Om oss</a></li>
+					</ul>
+					<ul class="nav pull-right">
+						<li><a href="?page=Logga-in">Logga in</a></li>
 						<li class="divider-vertical"></li>
-						<li><a href="?page=Kontakt">Kontakt</a></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Konto <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Inställningar</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Logga ut</a></li>
+						</ul>
+						</li>
 					</ul>
 				</div>
 			</div>
