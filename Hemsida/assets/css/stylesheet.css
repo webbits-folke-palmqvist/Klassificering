@@ -1,0 +1,13 @@
+body {
+	background-color: #FFFFFF;
+}
+
+.navbar {
+	margin-top: 20px;
+}
+
+.hero-unit {
+	padding: 20px;
+	background-color: #000000;
+	color: #999;
+}
