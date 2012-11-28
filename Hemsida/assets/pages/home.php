@@ -4,9 +4,9 @@
 		<li><a href="#">Start</a> <span class="divider">/</span></li>
 		<li><a href="#">Skola</a> <span class="divider">/</span></li>
 		<li class="active">Engelska C</li>
-		<li class="pull-right"><a class="btn btn-danger" href="#">Logga ut</a></li>
+		<li class="pull-right"><a class="btn btn-inverse" href="#">Mitt konto</a> <a class="btn btn-danger" href="#">Logga ut</a></li>
 	</ul>
-	<a class="btn btn-success" href="#">Lägg till dokument</a>
+	<a class="btn btn-success" href="?page=Dokument">Lägg till dokument</a>
 	<br /><br />
 	<div class="accordion" id="accordion2">
 		<div class="accordion-group">
