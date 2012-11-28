@@ -1,5 +1,5 @@
 <?php include('_top.php'); ?>
-<form class="form-signin" action="?page=process&do=login" method="POST">
+<form class="form-signin" action="?page=Process&action=login" method="POST">
 	<h2 class="form-signin-heading">Var vänlig att logga in</h2>
 	<input name="username" type="text" class="input-block-level" placeholder="Email">
 	<input name="password" type="password" class="input-block-level" placeholder="Lösenord">

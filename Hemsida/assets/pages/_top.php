@@ -1,3 +1,8 @@
+<?php
+ob_start();
+session_start();
+include($_SERVER['DOCUMENT_ROOT'].'/kunder/OnlineNote/Hemsida/assets/functions.php');
+?>
 <html>
 	<head>
 		<title>Online Note · <?php echo $title; ?></title>

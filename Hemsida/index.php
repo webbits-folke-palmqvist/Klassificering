@@ -25,6 +25,10 @@ switch ($page) {
 		$show_page = "document";
 		$title = "Lägg till ett dokument";
 		break;
+	case 'Process':
+		$show_page = "process";
+		$title = "Process";
+		break;
 	default:
 		$show_page = "404";
 		$title = "404";
