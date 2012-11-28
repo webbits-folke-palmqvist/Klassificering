@@ -17,6 +17,14 @@ switch ($page) {
 		$show_page = "login";
 		$title = "Logga in";
 		break;
+	case 'Registrera':
+		$show_page = "register";
+		$title = "Registrera dig";
+		break;
+	case 'Dokument':
+		$show_page = "document";
+		$title = "Lägg till ett dokument";
+		break;
 	default:
 		$show_page = "404";
 		$title = "404";
