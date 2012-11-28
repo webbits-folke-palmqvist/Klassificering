@@ -1,5 +1,5 @@
 body {
-	background-color: #FFFFFF;
+	background-color: #58A4D6;
 }
 
 .hero-unit {
@@ -33,4 +33,10 @@ body {
 	height: auto;
 	margin-bottom: 15px;
 	padding: 7px 9px;
+}
+
+hr {
+	display: block; height: 1px;
+    border: 0; border-top: 1px solid #EEEEEE;
+    margin: 1em 0; padding: 0;
 }
