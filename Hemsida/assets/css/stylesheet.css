@@ -7,6 +7,11 @@ body {
 	margin-top: 20px;
 }
 
+.hero-unit textarea {
+	width: 100%;
+	height: 65%;
+}	
+
 .form-signin {
 	max-width: 350px;
 	padding: 19px 29px 29px;
@@ -33,6 +38,12 @@ body {
 	height: auto;
 	margin-bottom: 15px;
 	padding: 7px 9px;
+}
+
+.input-fill {
+	width: 100%;
+	padding: 4px 6px;
+	height: 20px;
 }
 
 hr {
