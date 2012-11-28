@@ -18,7 +18,8 @@ if($action == "login"){
 		$_SESSION['user'] = $user;
 		header('location: ?page=Hem');
 	} else {
-		echo "Ingen match";
+		set_error("* Fel användarnamn eller lösenord.");
+		header('location: ?page=Logga-in');
 	}
 }
 
@@ -28,6 +29,6 @@ if($action == "logout"){
 }
 
 if($action == "register"){
-	
+
 }
 ?>
