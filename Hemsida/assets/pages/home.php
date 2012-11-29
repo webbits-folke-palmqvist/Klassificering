@@ -9,7 +9,7 @@ login();
 		<li class="active">Engelska C</li>
 		<li class="pull-right"><?php if(rank() == 9){ ?><a class="btn" href="?page=Admin">Admin panel</a><?php } ?> <a class="btn btn-inverse" href="#">Mitt konto</a> <a class="btn btn-danger" href="?page=Process&action=logout">Logga ut</a></li>
 	</ul>
-	<a class="btn btn-success" href="?page=Dokument">Lägg till dokument</a>
+	<a class="btn btn-success" href="?page=Dokument">Lägg till ett dokument</a> <a class="btn btn-success" href="#">Lägg till en kategori</a>
 	<br /><br />
 	<div class="accordion" id="accordion2">
 		<div class="accordion-group">
