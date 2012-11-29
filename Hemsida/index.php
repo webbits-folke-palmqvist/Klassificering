@@ -29,6 +29,10 @@ switch ($page) {
 		$show_page = "process";
 		$title = "Process";
 		break;
+	case 'Lyckat':
+		$show_page = "success";
+		$title = "Lyckat";
+		break;
 	default:
 		$show_page = "404";
 		$title = "404";
