@@ -46,7 +46,7 @@ if($action == "register"){
 				set_error("* Användarnamn används redan.");
 				header('location: ?page=Registrera');	
 			} else {
-				$sql = "INSERT INTO users(username, password)VALUES('$user', '$pass')";
+				$sql = "INSERT INTO users(username, password, rank)VALUES('$user', '$pass', '1')";
 				$add = mysql_query($sql);
 
 				if($add){

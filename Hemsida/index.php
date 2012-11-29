@@ -33,6 +33,10 @@ switch ($page) {
 		$show_page = "success";
 		$title = "Lyckat";
 		break;
+	case 'Admin':
+		$show_page = "admin";
+		$title = "Admin";
+		break;
 	default:
 		$show_page = "404";
 		$title = "404";

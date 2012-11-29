@@ -4,10 +4,10 @@ login();
 ?>
 <div class="hero-unit">
 	<ul class="breadcrumb">
-		<li><a href="#">Start</a> <span class="divider">/</span></li>
+		<li><a href="?page=Hem">Start</a> <span class="divider">/</span></li>
 		<li><a href="#">Skola</a> <span class="divider">/</span></li>
 		<li class="active">Engelska C</li>
-		<li class="pull-right"><a class="btn btn-inverse" href="#">Mitt konto</a> <a class="btn btn-danger" href="?page=Process&action=logout">Logga ut</a></li>
+		<li class="pull-right"><a class="btn" href="?page=Admin">Admin panel</a> <a class="btn btn-inverse" href="#">Mitt konto</a> <a class="btn btn-danger" href="?page=Process&action=logout">Logga ut</a></li>
 	</ul>
 	<a class="btn btn-success" href="?page=Dokument">Lägg till dokument</a>
 	<br /><br />
