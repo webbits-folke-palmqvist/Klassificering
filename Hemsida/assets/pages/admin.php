@@ -19,15 +19,15 @@ if(rank() != 9){
 		<table class="table table-bordered">
 			<tr>
 				<td>Användare</td>
-				<td>123 st</td>
+				<td><?php count_rows("users"); ?> st</td>
 			</tr>
 			<tr>
 				<td>Dokument</td>
-				<td>123 st</td>
+				<td><?php //count_rows("Table Name"); ?> st</td>
 			</tr>
 			<tr>
 				<td>Kategorier</td>
-				<td>123 st</td>
+				<td><?php count_rows("category"); ?> st</td>
 			</tr>
 		</table>
 		<?php

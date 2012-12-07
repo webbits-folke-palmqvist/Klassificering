@@ -43,4 +43,11 @@ function rank(){
 
 	return $row[0];
 }
+
+function count_rows($table) {
+	$result = mysql_query("SELECT * FROM ".$table);
+	$num_rows = mysql_num_rows($result);
+
+	echo $num_rows;
+}
 ?>
