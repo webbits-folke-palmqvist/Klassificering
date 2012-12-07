@@ -1,8 +1,8 @@
 <?php
 ob_start();
 session_start();
-include($_SERVER['DOCUMENT_ROOT'].'/kunder/OnlineNote/Hemsida/assets/database.php');
-include($_SERVER['DOCUMENT_ROOT'].'/kunder/OnlineNote/Hemsida/assets/functions.php');
+include($_SERVER['DOCUMENT_ROOT'].'/OnlineNote/Hemsida/assets/database.php');
+include($_SERVER['DOCUMENT_ROOT'].'/OnlineNote/Hemsida/assets/functions.php');
 ?>
 <html>
 	<head>

@@ -1,6 +1,6 @@
 <?php
-require($_SERVER['DOCUMENT_ROOT'].'/kunder/OnlineNote/Hemsida/assets/functions.php');
-require($_SERVER['DOCUMENT_ROOT'].'/kunder/OnlineNote/Hemsida/assets/database.php');
+require($_SERVER['DOCUMENT_ROOT'].'/OnlineNote/Hemsida/assets/functions.php');
+require($_SERVER['DOCUMENT_ROOT'].'/OnlineNote/Hemsida/assets/database.php');
 
 session_start();
 
