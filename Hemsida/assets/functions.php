@@ -62,4 +62,11 @@ function secure($unsafe){
 	$safe = mysql_real_escape_string($unsafe);
 	return $safe;
 }
+
+function cat_name($id) {
+	$result = mysql_query("SELECT name FROM category WHERE id = '$id' LIMIT 1");
+	$row = mysql_fetch_row($result);
+
+	return $row[0];
+}
 ?>
