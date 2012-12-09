@@ -6,7 +6,7 @@ login();
 	<h2>Lägg till ett dokument</h2>
 	<form action="?page=Process&action=document">
 		<input class="input-fill" type="text" name="title" placeholder="Titel"><br />
-		<textarea name="body" placeholder="Din text"></textarea>
+		<textarea name="body"></textarea>
 		<script language="javascript" type="text/javascript" src="assets/tiny_mce/tiny_mce.js"></script>
 	    <script language="javascript" type="text/javascript">
 	    tinyMCE.init({
