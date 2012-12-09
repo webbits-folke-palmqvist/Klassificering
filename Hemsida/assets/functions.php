@@ -57,4 +57,9 @@ function user_id($username){
 
 	return $row[0];
 }
+
+function secure($unsafe){
+	$safe = mysql_real_escape_string($unsafe);
+	return $safe;
+}
 ?>
