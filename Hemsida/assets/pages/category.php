@@ -1,6 +1,9 @@
 <?php
 include('_top.php');
 login();
+if(!$_GET['cat_id']){
+	header('location: ?page=Hem');
+}
 ?>
 <div class="hero-unit">
 	<ul class="breadcrumb">
