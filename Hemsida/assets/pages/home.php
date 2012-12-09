@@ -12,7 +12,7 @@ $user_id = user_id($_SESSION['user']);
 	<a class="btn btn-success" href="#">Lägg till en kategori</a>
 	<br /><br />
 	<?php
-	$result = mysql_query("SELECT * FROM category WHERE deleted = '0' AND user_id = '$user_id'");
+	$result = mysql_query("SELECT * FROM category WHERE deleted = '0' AND user_id = '$user_id' ORDER BY name");
 
 	while ($row = mysql_fetch_array($result)) {
 		?>
