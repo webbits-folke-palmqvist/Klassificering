@@ -23,7 +23,7 @@ if(rank() != 9){
 			</tr>
 			<tr>
 				<td>Dokument</td>
-				<td><?php //count_rows("Table Name"); ?> st</td>
+				<td><?php count_rows("document"); ?> st</td>
 			</tr>
 			<tr>
 				<td>Kategorier</td>
