@@ -33,6 +33,10 @@ switch ($page) {
 		$show_page = "success";
 		$title = "Lyckat";
 		break;
+	case 'Kategori':
+		$show_page = "category";
+		$title = "Kategori";
+		break;
 	case 'Admin':
 		$show_page = "admin";
 		$title = "Admin";
