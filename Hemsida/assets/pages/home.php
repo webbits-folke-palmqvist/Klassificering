@@ -16,7 +16,7 @@ $user_id = user_id($_SESSION['user']);
 
 	while ($row = mysql_fetch_array($result)) {
 		?>
-		<p><a href="?page=Kategori&?cat_id=<?php echo $row['id']; ?>"><?php echo $row['name']; ?></a></p>
+		<p><a href="?page=Kategori&cat_id=<?php echo $row['id']; ?>"><?php echo $row['name']; ?></a></p>
 		<?php
 	}
 	?>
