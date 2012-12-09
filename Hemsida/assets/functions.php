@@ -50,4 +50,11 @@ function count_rows($table) {
 
 	echo $num_rows;
 }
+
+function user_id($username){
+	$result = mysql_query("SELECT id FROM users WHERE username = '$username' LIMIT 1");
+	$row = mysql_fetch_row($result);
+
+	return $row[0];
+}
 ?>
