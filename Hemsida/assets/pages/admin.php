@@ -7,7 +7,7 @@ if(rank() != 9){
 ?>
 <div class="hero-unit">
 	<ul class="breadcrumb">
-		<li><a class="btn" href="?page=Admin">Start</a></li>
+		<li><a class="btn" href="?page=Admin">Statistik</a></li>
 		<li><a class="btn" href="?page=Admin&sub=users">Alla användare</a></li>
 		<li class="pull-right"><a class="btn" href="?page=Hem">Tillbaka</a></li>
 	</ul>
