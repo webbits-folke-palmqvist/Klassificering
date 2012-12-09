@@ -10,7 +10,8 @@ $user_id = user_id($_SESSION['user']);
 ?>
 <div class="hero-unit">
 	<ul class="breadcrumb">
-		<li>Start <span class="divider">/</span></li>
+		<li><a href="?page=Hem">Start</a> <span class="divider">/</span></li>
+		<li class="active"><?php echo cat_name($cat_id); ?></li>
 		<li class="pull-right"><?php if(rank() == 9){ ?><a class="btn" href="?page=Admin">Admin panel</a><?php } ?> <a class="btn btn-inverse" href="#">Mitt konto</a> <a class="btn btn-danger" href="?page=Process&action=logout">Logga ut</a></li>
 	</ul>
 	<a class="btn btn-success" href="?page=Dokument&do=add&cat_id=<?php echo $cat_id; ?>">Lägg till ett dokument</a>
@@ -18,7 +19,7 @@ $user_id = user_id($_SESSION['user']);
 	<div class="accordion" id="accordion2">
 		<div class="accordion-group">
 			<?php
-			$result = mysql_query("SELECT * FROM document WHERE deleted = '0' AND user_id = '$user_id' AND category_id = '$cat_id'");
+			$result = mysql_query("SELECT * FROM document WHERE deleted = '0' AND user_id = '$user_id' AND category_id = '$cat_id' ORDER BY title");
 
 			while($row = mysql_fetch_array($result)) {
 				?>
