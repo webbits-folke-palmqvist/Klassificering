@@ -4,7 +4,7 @@ require($_SERVER['DOCUMENT_ROOT'].'/OnlineNote/Hemsida/assets/database.php');
 
 session_start();
 
-$action = mysql_real_escape_string($_GET['action']);
+$action = secure($_GET['action']);
 
 if($action == "login"){
 	$user = mysql_real_escape_string($_POST['username']);
@@ -58,6 +58,14 @@ if($action == "register"){
 			set_error("* Lösenorden måste matcha.");
 			header('location: ?page=Registrera');
 		}
+	}
+}
+
+if($action == "document"){
+	$do = secure($_GET['do']);
+	if(empty($_POST['title']) OR empty($_POST['body'])){
+		set_error("* Du måste fylla i alla fälten.");
+		header('location: ?page=Dokument&action=add&cat_id='.secure($_POST['cat_id']));
 	}
 }
 ?>
