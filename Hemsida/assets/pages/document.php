@@ -8,7 +8,7 @@ if(secure($_GET['action']) == "add"){
 		<h2>Lägg till ett dokument</h2>
 		<?php error(); ?>
 		<form action="?page=Process&action=document&do=add" method="POST">
-			<input class="input-fill biggi" type="text" name="title" placeholder="Titel"><br />
+			<input class="input-fill" type="text" name="title" placeholder="Titel"><br />
 			<textarea name="body"></textarea>
 			<input type="hidden" name="cat_id" value="<?php echo $_GET['cat_id']; ?>">
 			<script language="javascript" type="text/javascript" src="assets/tiny_mce/tiny_mce.js"></script>
