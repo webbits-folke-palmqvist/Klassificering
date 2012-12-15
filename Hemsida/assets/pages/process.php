@@ -68,4 +68,12 @@ if($action == "document"){
 		header('location: ?page=Dokument&action=add&cat_id='.secure($_POST['cat_id']));
 	}
 }
+
+if($action == "category"){
+	$do = secure($_GET['do']);
+	if(empty($_POST['title'])){
+		set_error("* Du måste fylla i alla fälten.");
+		header('location: ?page=Kategori&action=add');
+	}
+}
 ?>
