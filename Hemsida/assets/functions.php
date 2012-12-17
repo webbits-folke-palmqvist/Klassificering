@@ -48,7 +48,22 @@ function count_rows($table) {
 	$result = mysql_query("SELECT * FROM ".$table);
 	$num_rows = mysql_num_rows($result);
 
-	echo $num_rows;
+	if($num_rows < 1){
+		echo "0";
+	} else {
+		echo $num_rows;
+	}
+}
+
+function count_rows_user($table, $user_id) {
+	$result = mysql_query("SELECT * FROM ".$table." WHERE user_id = '$user_id' AND deleted = '0'");
+	$num_rows = mysql_num_rows($result);
+
+	if($num_rows < 1){
+		echo "0";
+	} else {
+		echo $num_rows;
+	}
 }
 
 function user_id($username){
