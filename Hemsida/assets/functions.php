@@ -17,7 +17,7 @@ function unset_error() {
 
 function success() {
 	echo '<p class="text-success">'.$_SESSION['success'].'</p>';
-	unset_error();
+	unset_success();
 }
 
 function set_success($success) {
