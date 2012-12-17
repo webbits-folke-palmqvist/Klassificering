@@ -7,9 +7,9 @@ if(secure($_GET['action']) == "add"){
 	<div class="hero-unit">
 		<h2>Lägg till ett dokument</h2>
 		<?php error(); ?>
-		<form action="?page=Process&action=document&do=add" method="POST">
+		<form action="?page=Process&action=document&do=add&cat_id=<?php echo secure($_GET['cat_id']); ?>" method="POST">
 			<input class="input-fill" type="text" name="title" placeholder="Titel"><br />
-			<textarea name="body"></textarea>
+			<textarea name="content"></textarea>
 			<input type="hidden" name="cat_id" value="<?php echo $_GET['cat_id']; ?>">
 			<script language="javascript" type="text/javascript" src="assets/tiny_mce/tiny_mce.js"></script>
 		    <script language="javascript" type="text/javascript">
@@ -20,7 +20,7 @@ if(secure($_GET['action']) == "add"){
 		    });
 		    </script>
 		    <br>
-			<a class="btn btn-danger" href="?page=Hem">Avbryt</a> <input class="btn btn-success" type="submit" value="Spara">
+			<a class="btn btn-danger" href="?page=Kategori&action=view&cat_id=<?php echo secure($_GET['cat_id']); ?>">Avbryt</a> <input class="btn btn-success" type="submit" value="Spara">
 		</form>
 	</div>
 	<?php
