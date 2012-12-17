@@ -10,7 +10,7 @@ if($action == "login"){
 	$user = secure($_POST['username']);
 	$pass = secure($_POST['password']);
 
-	$sql = "SELECT * FROM users WHERE username = '$user' AND password = '$pass'";
+	$sql = "SELECT * FROM users WHERE username = '$user' AND password = '$pass' AND deleted = 0 AND rank > 0";
 	$result = mysql_query($sql);
 	$count = mysql_num_rows($result);
 
