@@ -73,24 +73,17 @@ if($action == "document"){
 
 			$user = $_SESSION['user'];
 
-			$result = mysql_query("SELECT id FROM users WHERE username = '$user'");
-			if(!$result){
-				header('location: ?page=Hem');
-			} else {
-				$row = mysql_fetch_row($result);
+			$user_id = user_id($user);
+			$cat_id = secure($_GET['cat_id']);
+			$title = secure($_POST['title']);
+			$content = secure($_POST['content']);
 
-				$user_id = $row[0];
-				$cat_id = secure($_GET['cat_id']);
-				$title = secure($_POST['title']);
-				$content = secure($_POST['content']);
+			$sql = "INSERT INTO document(category_id, user_id, title, content)VALUES('$cat_id', '$user_id', '$title', '$content')";
+			$add = mysql_query($sql);
 
-				$sql = "INSERT INTO document(category_id, user_id, title, content)VALUES('$cat_id', '$user_id', '$title', '$content')";
-				$add = mysql_query($sql);
-
-				if($add){
-					set_success("* Ditt dokument har laggts in i databasen.");
-					header('location: ?page=Kategori&action=view&cat_id='.$cat_id);
-				}
+			if($add){
+				set_success("* Ditt dokument har laggts in i databasen.");
+				header('location: ?page=Kategori&action=view&cat_id='.$cat_id);
 			}
 		}
 	}
@@ -108,6 +101,23 @@ if($action == "document"){
 			header('location: ?page=Kategori&action=view&cat_id='.$cat_id);
 		}
 	}
+
+	if($do == "edit"){
+		$id = secure($_GET['id']);
+		$cat_id = secure($_GET['cat_id']);
+		$title = secure($_POST['title']);
+		$content = secure($_POST['content']);
+		$user_id = user_id(secure($_SESSION['user']));
+
+		if(!$id OR !$cat_id OR !$title OR !$content){
+			header('location: ?page=Hem');
+		} else {
+			$sql = "UPDATE document SET title = '$title', content = '$content' WHERE id = '$id' AND category_id = '$cat_id' AND user_id = '$user_id'";
+			mysql_query($sql) or die(mysql_error());
+
+			header('location: ?page=Dokument&action=edit&id='.$id.'&cat_id='.$cat_id);
+		}
+	}
 }
 
 if($action == "category"){
@@ -119,23 +129,16 @@ if($action == "category"){
 		} else {
 			$user = $_SESSION['user'];
 
-			$result = mysql_query("SELECT id FROM users WHERE username = '$user'");
-			if(!$result){
+			$user_id = user_id($user);
+			$title = secure($_POST['title']);
+
+
+			$sql = "INSERT INTO category(user_id, name, deleted)VALUES('$user_id', '$title', '0')";
+			$add = mysql_query($sql);
+
+			if($add){
+				set_success("* Din kategori har laggts in i databasen.");
 				header('location: ?page=Hem');
-			} else {
-				$row = mysql_fetch_row($result);
-
-				$user_id = $row[0];
-				$title = secure($_POST['title']);
-
-
-				$sql = "INSERT INTO category(user_id, name, deleted)VALUES('$user_id', '$title', '0')";
-				$add = mysql_query($sql);
-
-				if($add){
-					set_success("* Din kategori har laggts in i databasen.");
-					header('location: ?page=Hem');
-				}
 			}
 		}
 	}
