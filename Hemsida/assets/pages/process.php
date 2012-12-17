@@ -15,7 +15,7 @@ if($action == "login"){
 	$count = mysql_num_rows($result);
 
 	if($count == 1){
-		$_SESSION['user'] = $user;
+		$_SESSION['user'] = strtolower($user);
 		header('location: ?page=Hem');
 	} else {
 		set_error("* Fel användarnamn eller lösenord.");
@@ -74,6 +74,27 @@ if($action == "category"){
 	if(empty($_POST['title'])){
 		set_error("* Du måste fylla i alla fälten.");
 		header('location: ?page=Kategori&action=add');
+	} else {
+		$user = $_SESSION['user'];
+
+		$result = mysql_query("SELECT id FROM users WHERE username = '$user'");
+		if(!$result){
+			header('location: ?page=Hem');
+		} else {
+			$row = mysql_fetch_row($result);
+
+			$user_id = $row[0];
+			$title = secure($_POST['title']);
+
+
+			$sql = "INSERT INTO category(user_id, name, deleted)VALUES('$user_id', '$title', '0')";
+			$add = mysql_query($sql);
+
+			if($add){
+				set_success("* Din kategori har laggts in i databasen.");
+				header('location: ?page=Hem');
+			}
+		}
 	}
 }
 ?>
