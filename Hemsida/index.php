@@ -41,6 +41,10 @@ switch ($page) {
 		$show_page = "admin";
 		$title = "Admin";
 		break;
+	case 'Mitt-konto':
+		$show_page = "account";
+		$title = "Mitt konto";
+		break;
 	default:
 		$show_page = "404";
 		$title = "404";
