@@ -14,7 +14,7 @@ if($_GET['action'] == "view"){
 		<ul class="breadcrumb">
 			<li><a href="?page=Hem">Start</a> <span class="divider">/</span></li>
 			<li class="active"><?php echo cat_name($cat_id); ?></li>
-			<li class="pull-right"><?php if(rank() == 9){ ?><a class="btn" href="?page=Admin">Admin panel</a><?php } ?> <a class="btn btn-inverse" href="#">Mitt konto</a> <a class="btn btn-danger" href="?page=Process&action=logout">Logga ut</a></li>
+			<li class="pull-right"><?php if(rank() == 9){ ?><a class="btn" href="?page=Admin">Admin panel</a><?php } ?> <a class="btn btn-inverse" href="?page=Mitt-konto">Mitt konto</a> <a class="btn btn-danger" href="?page=Process&action=logout">Logga ut</a></li>
 		</ul>
 		<a class="btn btn-success" href="?page=Dokument&action=add&cat_id=<?php echo $cat_id; ?>">Lägg till ett dokument</a>
 		<?php success(); ?>
@@ -33,7 +33,7 @@ if($_GET['action'] == "view"){
 					<div id="<?php echo $row['id']; ?>" class="accordion-body collapse" style="height: 0px;">
 						<div class="accordion-inner">
 							<?php echo $row['content']; ?>
-							<hr><a class="btn btn-info" href="#">Ändra</a> <a class="btn btn-danger" href="?page=Process&action=document&do=delete&cat_id=<?php echo secure($_GET['cat_id']); ?>&id=<?php echo $row['id']; ?>">Radera</a>
+							<hr><a class="btn btn-info" href="?page=Dokument&action=edit&id=<?php echo $row['id'] ?>&cat_id=<?php echo secure($_GET['cat_id']); ?>">Ändra</a> <a class="btn btn-danger" href="?page=Process&action=document&do=delete&cat_id=<?php echo secure($_GET['cat_id']); ?>&id=<?php echo $row['id']; ?>">Radera</a>
 						</div>
 					</div>
 					<?php
