@@ -9,7 +9,7 @@ if(secure($_GET['action']) == "add"){
 			<li><a href="?page=Hem">Start</a> <span class="divider">/</span></li>
 			<li><a href="?page=Kategori&action=view&cat_id=<?php echo secure($_GET['cat_id']); ?>"><?php echo cat_name(secure($_GET['cat_id'])); ?></a> <span class="divider">/</span></li>
 			<li class="active">Nytt dokument</li>
-			<li class="pull-right"><?php if(rank() == 9){ ?><a class="btn" href="?page=Admin">Admin panel</a><?php } ?> <a class="btn btn-inverse" href="#">Mitt konto</a> <a class="btn btn-danger" href="?page=Process&action=logout">Logga ut</a></li>
+			<li class="pull-right"><?php if(rank() == 9){ ?><a class="btn" href="?page=Admin">Admin panel</a><?php } ?> <a class="btn btn-inverse" href="?page=Mitt-konto">Mitt konto</a> <a class="btn btn-danger" href="?page=Process&action=logout">Logga ut</a></li>
 		</ul>
 		<h2>Lägg till ett dokument</h2>
 		<?php error(); ?>
@@ -28,6 +28,48 @@ if(secure($_GET['action']) == "add"){
 		    <br>
 			<a class="btn btn-danger" href="?page=Kategori&action=view&cat_id=<?php echo secure($_GET['cat_id']); ?>">Avbryt</a> <input class="btn btn-success" type="submit" value="Spara">
 		</form>
+	</div>
+	<?php
+}
+
+if(secure($_GET['action']) == "edit"){
+	?>
+	<div class="hero-unit">
+		<ul class="breadcrumb">
+			<li><a href="?page=Hem">Start</a> <span class="divider">/</span></li>
+			<li><a href="?page=Kategori&action=view&cat_id=<?php echo secure($_GET['cat_id']); ?>"><?php echo cat_name(secure($_GET['cat_id'])); ?></a> <span class="divider">/</span></li>
+			<li class="active">Ändra</li>
+			<li class="pull-right"><?php if(rank() == 9){ ?><a class="btn" href="?page=Admin">Admin panel</a><?php } ?> <a class="btn btn-inverse" href="#">Mitt konto</a> <a class="btn btn-danger" href="?page=Process&action=logout">Logga ut</a></li>
+		</ul>
+		<h2>Lägg till ett dokument</h2>
+		<?php error(); ?>
+		<?php
+		$user = $_SESSION['user'];
+		$user_id = user_id($user);
+		$cat_id = secure($_GET['cat_id']);
+
+		$result = mysql_query("SELECT * FROM document WHERE deleted = '0' AND user_id = '$user_id' AND category_id = '$cat_id' LIMIT 1");
+
+		while($row = mysql_fetch_array($result)){
+			?>
+			<form action="?page=Process&action=document&do=edit&id=<?php echo $row['id']; ?>&cat_id=<?php echo secure($_GET['cat_id']); ?>" method="POST">
+				<input class="input-fill" type="text" name="title" placeholder="Titel" value="<?php echo $row['title']; ?>"><br />
+				<textarea name="content"><?php echo $row['content']; ?></textarea>
+				<input type="hidden" name="cat_id" value="<?php echo $cat_id; ?>">
+				<script language="javascript" type="text/javascript" src="assets/tiny_mce/tiny_mce.js"></script>
+			    <script language="javascript" type="text/javascript">
+			    tinyMCE.init({
+			            theme : "advanced",
+			            mode : "textareas",
+			            theme_advanced_toolbar_location : "top"
+			    });
+			    </script>
+			    <br>
+				<a class="btn btn-danger" href="?page=Kategori&action=view&cat_id=<?php echo secure($_GET['cat_id']); ?>">Tillbaka</a> <input class="btn btn-success" type="submit" value="Spara">
+			</form>
+			<?php
+		}
+		?>
 	</div>
 	<?php
 }
