@@ -63,18 +63,13 @@ if($action == "register"){
 
 if($action == "document"){
 	$do = secure($_GET['do']);
-	if(empty($_POST['title']) OR empty($_POST['body'])){
-		set_error("* Du måste fylla i alla fälten.");
-		header('location: ?page=Dokument&action=add&cat_id='.secure($_POST['cat_id']));
-	}
-}
+	$cat_id = secure($_POST['cat_id']);
 
-if($action == "category"){
-	$do = secure($_GET['do']);
-	if(empty($_POST['title'])){
+	if(empty($_POST['title']) OR empty($_POST['content'])){
 		set_error("* Du måste fylla i alla fälten.");
-		header('location: ?page=Kategori&action=add');
+		header('location: ?page=Dokument&action=add&cat_id='.$cat_id);
 	} else {
+
 		$user = $_SESSION['user'];
 
 		$result = mysql_query("SELECT id FROM users WHERE username = '$user'");
@@ -84,16 +79,61 @@ if($action == "category"){
 			$row = mysql_fetch_row($result);
 
 			$user_id = $row[0];
+			$cat_id = secure($_GET['cat_id']);
 			$title = secure($_POST['title']);
+			$content = secure($_POST['content']);
 
-
-			$sql = "INSERT INTO category(user_id, name, deleted)VALUES('$user_id', '$title', '0')";
+			$sql = "INSERT INTO document(category_id, user_id, title, content)VALUES('$cat_id', '$user_id', '$title', '$content')";
 			$add = mysql_query($sql);
 
 			if($add){
-				set_success("* Din kategori har laggts in i databasen.");
-				header('location: ?page=Hem');
+				set_success("* Ditt dokument har laggts in i databasen.");
+				header('location: ?page=Kategori&action=view&cat_id='.$cat_id);
 			}
+		}
+	}
+}
+
+if($action == "category"){
+	$do = secure($_GET['do']);
+	if($do == "add"){
+		if(empty($_POST['title'])){
+			set_error("* Du måste fylla i alla fälten.");
+			header('location: ?page=Kategori&action=add');
+		} else {
+			$user = $_SESSION['user'];
+
+			$result = mysql_query("SELECT id FROM users WHERE username = '$user'");
+			if(!$result){
+				header('location: ?page=Hem');
+			} else {
+				$row = mysql_fetch_row($result);
+
+				$user_id = $row[0];
+				$title = secure($_POST['title']);
+
+
+				$sql = "INSERT INTO category(user_id, name, deleted)VALUES('$user_id', '$title', '0')";
+				$add = mysql_query($sql);
+
+				if($add){
+					set_success("* Din kategori har laggts in i databasen.");
+					header('location: ?page=Hem');
+				}
+			}
+		}
+	}
+
+	if($do == "delete"){
+		$cat_id = secure($_GET['cat_id']);
+
+		if(!$cat_id){
+			header('location: ?page=Hem');
+		} else {
+			$sql = "UPDATE category SET deleted = '1' WHERE id = '$cat_id'";
+			mysql_query($sql) or die("SQL: $sql ".mysql_error());
+
+			header('location: ?page=Hem');
 		}
 	}
 }
