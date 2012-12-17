@@ -10,7 +10,8 @@ $user_id = user_id($_SESSION['user']);
 		<li class="pull-right"><?php if(rank() == 9){ ?><a class="btn" href="?page=Admin">Admin panel</a><?php } ?> <a class="btn btn-inverse" href="#">Mitt konto</a> <a class="btn btn-danger" href="?page=Process&action=logout">Logga ut</a></li>
 	</ul>
 	<a class="btn btn-success" href="?page=Kategori&action=add">Lägg till en kategori</a>
-	<br /><br />
+	<br><br>
+	<?php success(); ?>
 	<?php
 	$result = mysql_query("SELECT * FROM category WHERE deleted = '0' AND user_id = '$user_id' ORDER BY name");
 
