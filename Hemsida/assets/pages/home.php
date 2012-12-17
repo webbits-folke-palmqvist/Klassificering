@@ -26,4 +26,4 @@ $user_id = user_id($_SESSION['user']);
 		?>
 	</table>
 </div>
-<?php include('_bottom.php'); ?>
+<?php include('_footer.php'); ?>

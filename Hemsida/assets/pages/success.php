@@ -6,4 +6,4 @@
 	</center>
 	<?php if(!$_SESSION['success']){header('location: ?page=Hem');} ?>
 </form>
-<?php include('_bottom.php'); ?>
+<?php include('_footer.php'); ?>

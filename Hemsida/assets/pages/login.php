@@ -9,4 +9,4 @@
 	<hr>
 	<center>Inte medlem? <a href="?page=Registrera">Registrera dig här</a></center>
 </form>
-<?php include('_bottom.php'); ?>
+<?php include('_footer.php'); ?>

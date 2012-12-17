@@ -36,4 +36,4 @@ if(rank() != 9){
 	}
 	?>
 </div>
-<?php include('_bottom.php'); ?>
+<?php include('_footer.php'); ?>

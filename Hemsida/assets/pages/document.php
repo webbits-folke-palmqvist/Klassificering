@@ -74,5 +74,5 @@ if(secure($_GET['action']) == "edit"){
 	<?php
 }
 
-include('_bottom.php');
+include('_footer.php');
 ?>

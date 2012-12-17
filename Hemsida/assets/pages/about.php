@@ -3,4 +3,4 @@
 <div class="hero-unit">
 	<p>Om oss</p>
 </div>
-<?php include('_bottom.php'); ?>
+<?php include('_footer.php'); ?>

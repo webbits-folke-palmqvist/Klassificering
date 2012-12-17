@@ -10,4 +10,4 @@
 	<hr>
 	<center><a href="?page=Logga-in">Tillbaka</a></center>
 </form>
-<?php include('_bottom.php'); ?>
+<?php include('_footer.php'); ?>

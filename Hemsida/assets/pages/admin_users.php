@@ -6,7 +6,7 @@
 		<td><strong>Ta bort</strong></td>
 	</tr>
 	<?php
-	$query = "SELECT * FROM users WHERE rank = '1' ORDER BY username"; 
+	$query = "SELECT * FROM users WHERE rank = '1' AND deleted = 0 ORDER BY username"; 
 	$result = mysql_query($query) or die(mysql_error());
 
 	while($row = mysql_fetch_array($result)){

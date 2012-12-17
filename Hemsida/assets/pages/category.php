@@ -64,5 +64,5 @@ if($_GET['action'] == "add"){
 	<?php
 }
 
-include('_bottom.php');
+include('_footer.php');
 ?>
