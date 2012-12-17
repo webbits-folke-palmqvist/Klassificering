@@ -26,6 +26,7 @@ if(secure($_GET['action']) == "add"){
 		    });
 		    </script>
 		    <br>
+		    <?php success(); ?>
 			<a class="btn btn-danger" href="?page=Kategori&action=view&cat_id=<?php echo secure($_GET['cat_id']); ?>">Avbryt</a> <input class="btn btn-success" type="submit" value="Spara">
 		</form>
 	</div>
@@ -65,6 +66,7 @@ if(secure($_GET['action']) == "edit"){
 			    });
 			    </script>
 			    <br>
+			    <?php success(); ?>
 				<a class="btn btn-danger" href="?page=Kategori&action=view&cat_id=<?php echo secure($_GET['cat_id']); ?>">Tillbaka</a> <input class="btn btn-success" type="submit" value="Spara">
 			</form>
 			<?php

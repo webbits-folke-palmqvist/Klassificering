@@ -82,8 +82,8 @@ if($action == "document"){
 			$add = mysql_query($sql);
 
 			if($add){
-				set_success("* Ditt dokument har laggts in i databasen.");
-				header('location: ?page=Kategori&action=view&cat_id='.$cat_id);
+				set_success("* Ditt dokument har sparats i databasen.");
+				header('location: ?page=Dokument&action=edit&id='.$id.'&cat_id='.$cat_id);
 			}
 		}
 	}
@@ -115,6 +115,7 @@ if($action == "document"){
 			$sql = "UPDATE document SET title = '$title', content = '$content' WHERE id = '$id' AND category_id = '$cat_id' AND user_id = '$user_id'";
 			mysql_query($sql) or die(mysql_error());
 
+			set_success("* Ditt dokument har sparats i databasen.");
 			header('location: ?page=Dokument&action=edit&id='.$id.'&cat_id='.$cat_id);
 		}
 	}
