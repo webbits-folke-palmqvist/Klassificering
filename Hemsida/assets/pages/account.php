@@ -15,6 +15,7 @@ $user_id = user_id($_SESSION['user']);
 			<table class="table table-hover">
 				<tr>
 					<td><strong>Din statistik</strong></td>
+					<td></td>
 				</tr>
 				<tr>
 					<td><strong>Antal dokument:</strong></td>
@@ -27,7 +28,7 @@ $user_id = user_id($_SESSION['user']);
 			</table>
 		</div>
 		<div class="span5">
-			<p>asd</p>
+			
 		</div>
 	</div>
 </div>
