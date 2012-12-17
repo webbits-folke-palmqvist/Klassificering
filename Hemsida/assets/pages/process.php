@@ -7,8 +7,8 @@ session_start();
 $action = secure($_GET['action']);
 
 if($action == "login"){
-	$user = mysql_real_escape_string($_POST['username']);
-	$pass = mysql_real_escape_string($_POST['password']);
+	$user = secure($_POST['username']);
+	$pass = secure($_POST['password']);
 
 	$sql = "SELECT * FROM users WHERE username = '$user' AND password = '$pass'";
 	$result = mysql_query($sql);
@@ -29,9 +29,9 @@ if($action == "logout"){
 }
 
 if($action == "register"){
-	$user = mysql_real_escape_string($_POST['username']);
-	$pass = mysql_real_escape_string($_POST['password']);
-	$pass2 = mysql_real_escape_string($_POST['password2']);
+	$user = secure($_POST['username']);
+	$pass = secure($_POST['password']);
+	$pass2 = secure($_POST['password2']);
 
 	if(!$pass OR !$pass2 OR !$user){
 		set_error("* Fyll i alla fälten.");
@@ -65,31 +65,47 @@ if($action == "document"){
 	$do = secure($_GET['do']);
 	$cat_id = secure($_POST['cat_id']);
 
-	if(empty($_POST['title']) OR empty($_POST['content'])){
-		set_error("* Du måste fylla i alla fälten.");
-		header('location: ?page=Dokument&action=add&cat_id='.$cat_id);
-	} else {
+	if($do == "add"){
+		if(empty($_POST['title']) OR empty($_POST['content'])){
+			set_error("* Du måste fylla i alla fälten.");
+			header('location: ?page=Dokument&action=add&cat_id='.$cat_id);
+		} else {
 
-		$user = $_SESSION['user'];
+			$user = $_SESSION['user'];
 
-		$result = mysql_query("SELECT id FROM users WHERE username = '$user'");
-		if(!$result){
+			$result = mysql_query("SELECT id FROM users WHERE username = '$user'");
+			if(!$result){
+				header('location: ?page=Hem');
+			} else {
+				$row = mysql_fetch_row($result);
+
+				$user_id = $row[0];
+				$cat_id = secure($_GET['cat_id']);
+				$title = secure($_POST['title']);
+				$content = secure($_POST['content']);
+
+				$sql = "INSERT INTO document(category_id, user_id, title, content)VALUES('$cat_id', '$user_id', '$title', '$content')";
+				$add = mysql_query($sql);
+
+				if($add){
+					set_success("* Ditt dokument har laggts in i databasen.");
+					header('location: ?page=Kategori&action=view&cat_id='.$cat_id);
+				}
+			}
+		}
+	}
+
+	if($do == "delete"){
+		$id = secure($_GET['id']);
+		$cat_id = secure($_GET['cat_id']);
+
+		if(!$id OR !$cat_id){
 			header('location: ?page=Hem');
 		} else {
-			$row = mysql_fetch_row($result);
+			$sql = "UPDATE document SET deleted = '1' WHERE id = '$id'";
+			mysql_query($sql) or die("SQL: $sql ".mysql_error());
 
-			$user_id = $row[0];
-			$cat_id = secure($_GET['cat_id']);
-			$title = secure($_POST['title']);
-			$content = secure($_POST['content']);
-
-			$sql = "INSERT INTO document(category_id, user_id, title, content)VALUES('$cat_id', '$user_id', '$title', '$content')";
-			$add = mysql_query($sql);
-
-			if($add){
-				set_success("* Ditt dokument har laggts in i databasen.");
-				header('location: ?page=Kategori&action=view&cat_id='.$cat_id);
-			}
+			header('location: ?page=Kategori&action=view&cat_id='.$cat_id);
 		}
 	}
 }
@@ -130,7 +146,7 @@ if($action == "category"){
 		if(!$cat_id){
 			header('location: ?page=Hem');
 		} else {
-			$sql = "UPDATE category SET deleted = '1' WHERE id = '$cat_id'";
+			$sql = "UPDATE category SET deleted = '1' WHERE id = '$cat_id' LIMIT 1";
 			mysql_query($sql) or die("SQL: $sql ".mysql_error());
 
 			header('location: ?page=Hem');
