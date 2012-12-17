@@ -34,6 +34,7 @@ if(secure($_GET['action']) == "add"){
 }
 
 if(secure($_GET['action']) == "edit"){
+	my_doc(secure($_GET['id']));
 	?>
 	<div class="hero-unit">
 		<ul class="breadcrumb">

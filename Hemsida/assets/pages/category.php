@@ -6,9 +6,10 @@ $cat_id = secure($_GET['cat_id']);
 $user_id = user_id($_SESSION['user']);
 
 if($_GET['action'] == "view"){
-	if(!$_GET['cat_id']){
+	if(!$cat_id){
 		header('location: ?page=Hem');
 	}
+	my_cat(secure($_GET['cat_id']));
 	?>
 	<div class="hero-unit">
 		<ul class="breadcrumb">

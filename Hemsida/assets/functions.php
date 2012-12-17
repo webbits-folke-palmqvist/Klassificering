@@ -84,4 +84,26 @@ function cat_name($id) {
 
 	return $row[0];
 }
+
+function my_cat($cat_id){
+	$user_id = user_id($_SESSION['user']);
+
+	$result = mysql_query("SELECT * FROM category WHERE deleted = '0' AND user_id = '$user_id' AND id = '$cat_id' LIMIT 1");
+	$num_rows = mysql_num_rows($result);
+
+	if($num_rows == 0){
+		header('location: ?page=Hem');
+	}
+}
+
+function my_doc($doc_id){
+	$user_id = user_id($_SESSION['user']);
+
+	$result = mysql_query("SELECT * FROM document WHERE deleted = '0' AND user_id = '$user_id' AND id = '$doc_id' LIMIT 1");
+	$num_rows = mysql_num_rows($result);
+
+	if($num_rows == 0){
+		header('location: ?page=Hem');
+	}
+}
 ?>

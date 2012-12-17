@@ -10,7 +10,7 @@ if($action == "login"){
 	$user = secure($_POST['username']);
 	$pass = secure($_POST['password']);
 
-	$sql = "SELECT * FROM users WHERE username = '$user' AND password = '$pass' AND deleted = 0 AND rank > 0";
+	$sql = "SELECT * FROM users WHERE username = '$user' AND password = '$pass' AND deleted = 0 AND rank != 0";
 	$result = mysql_query($sql);
 	$count = mysql_num_rows($result);
 
@@ -83,7 +83,7 @@ if($action == "document"){
 
 			if($add){
 				set_success("* Ditt dokument har sparats i databasen.");
-				header('location: ?page=Dokument&action=edit&id='.$id.'&cat_id='.$cat_id);
+				header('location: ?page=Kategori&action=view&cat_id='.$cat_id);
 			}
 		}
 	}
