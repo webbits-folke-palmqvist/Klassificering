@@ -33,7 +33,7 @@ if($_GET['action'] == "view"){
 					<div id="<?php echo $row['id']; ?>" class="accordion-body collapse" style="height: 0px;">
 						<div class="accordion-inner">
 							<?php echo $row['content']; ?>
-							<hr><a class="btn btn-info" href="#">Ändra</a> <a class="btn btn-danger" href="#">Radera</a>
+							<hr><a class="btn btn-info" href="#">Ändra</a> <a class="btn btn-danger" href="?page=Process&action=delete&id=<?php echo $row['id']; ?>">Radera</a>
 						</div>
 					</div>
 					<?php
