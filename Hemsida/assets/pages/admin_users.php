@@ -1,3 +1,4 @@
+<?php success(); ?>
 <table class="table table-bordered">
 	<tr>
 		<td><strong>ID</strong></td>
@@ -11,14 +12,13 @@
 	$result = mysql_query($query) or die(mysql_error());
 
 	while($row = mysql_fetch_array($result)){
-		$user_id = user_id($row['username']);
 		?>
 		<tr>
 			<td style="width: 1%;"><?php echo $row['id']; ?></td>
 			<td><?php echo $row['username']; ?></td>
-			<td style="width: 10%;"><?php count_rows_user("document", $user_id); ?> st</td>
-			<td style="width: 10%;"><?php count_rows_user("category", $user_id); ?> st</td>
-			<td style="width: 10%;"><a class="btn" href="#">Ta bort</a></td>
+			<td style="width: 10%;"><?php count_rows_user("document", $row['id']); ?> st</td>
+			<td style="width: 10%;"><?php count_rows_user("category", $row['id']); ?> st</td>
+			<td style="width: 10%;"><a class="btn" href="?page=Process&action=admin&do=DeleteUser&UserID=<?php echo $row['id']; ?>">Ta bort</a></td>
 		</tr>
 		<?php
 	}

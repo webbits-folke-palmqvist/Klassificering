@@ -158,4 +158,24 @@ if($action == "category"){
 		}
 	}
 }
+
+if($action == "admin"){
+	if(rank() == 9){
+		$do = secure($_GET['do']);
+		if($do == "DeleteUser"){
+			$user_id = secure($_GET['UserID']);
+			if(!empty($user_id)){
+				$sql = "UPDATE users SET deleted = '1' WHERE id = '$user_id' LIMIT 1";
+				mysql_query($sql) or die(mysql_error());
+
+				set_success("* Användaren är nu raderad.");
+				header('location: ?page=Admin&sub=users');
+			} else {
+				header('location: ?page=Hem');
+			}
+		} else {
+			header('location: ?page=Hem');
+		}
+	}
+}
 ?>
