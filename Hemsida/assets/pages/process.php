@@ -10,13 +10,23 @@ if($action == "login"){
 	$user = secure($_POST['username']);
 	$pass = md5(secure($_POST['password']));
 
-	$sql = "SELECT * FROM users WHERE username = '$user' AND password = '$pass' AND deleted = 0 AND rank != 0";
+	$sql = "SELECT * FROM users WHERE username = '$user' AND password = '$pass' AND rank != 0";
 	$result = mysql_query($sql);
 	$count = mysql_num_rows($result);
 
 	if($count == 1){
-		$_SESSION['user'] = strtolower($user);
-		header('location: ?page=Hem');
+
+		$sql = "SELECT * FROM users WHERE username = '$user' AND password = '$pass' AND deleted = 0 AND rank != 0";
+		$result = mysql_query($sql);
+		$count = mysql_num_rows($result);
+		
+		if($count == 1){
+			$_SESSION['user'] = strtolower($user);
+			header('location: ?page=Hem');
+		} else {
+			set_error("* Denna användare är bannad eller raderad.");
+			header('location: ?page=Logga-in');
+		}
 	} else {
 		set_error("* Fel användarnamn eller lösenord.");
 		header('location: ?page=Logga-in');
