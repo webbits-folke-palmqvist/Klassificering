@@ -1,6 +1,6 @@
 <?php
-require($_SERVER['DOCUMENT_ROOT'].'/OnlineNote/Hemsida/assets/functions.php');
-require($_SERVER['DOCUMENT_ROOT'].'/OnlineNote/Hemsida/assets/database.php');
+require('assets/functions.php');
+require('assets/database.php');
 
 session_start();
 
@@ -8,7 +8,7 @@ $action = secure($_GET['action']);
 
 if($action == "login"){
 	$user = secure($_POST['username']);
-	$pass = secure($_POST['password']);
+	$pass = md5(secure($_POST['password']));
 
 	$sql = "SELECT * FROM users WHERE username = '$user' AND password = '$pass' AND deleted = 0 AND rank != 0";
 	$result = mysql_query($sql);
@@ -41,6 +41,7 @@ if($action == "register"){
 			$sql = "SELECT * FROM users WHERE username = '$user'";
 			$result = mysql_query($sql);
 			$count = mysql_num_rows($result);
+			$pass = md5($pass);
 
 			if($count == 1){
 				set_error("* Användarnamn används redan.");

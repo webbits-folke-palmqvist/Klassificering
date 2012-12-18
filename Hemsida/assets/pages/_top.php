@@ -1,12 +1,12 @@
 <?php
 ob_start();
 session_start();
-include($_SERVER['DOCUMENT_ROOT'].'/OnlineNote/Hemsida/assets/database.php');
-include($_SERVER['DOCUMENT_ROOT'].'/OnlineNote/Hemsida/assets/functions.php');
+include('assets/database.php');
+include('assets/functions.php');
 ?>
 <html>
 	<head>
-		<title>Online Note · <?php echo $title; ?></title>
+		<title>Klassificering · <?php echo $title; ?></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<link href='assets/css/bootstrap.css' rel='stylesheet' type='text/css'>
 		<link href='assets/css/stylesheet.css' rel='stylesheet' type='text/css'>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include($_SERVER['DOCUMENT_ROOT'].'/kunder/OnlineNote/Hemsida/assets/database.php');
+include('assets/database.php');
 
 function error() {
 	echo '<p class="text-error">'.$_SESSION['error'].'</p>';
@@ -45,7 +45,7 @@ function rank(){
 }
 
 function count_rows($table) {
-	$result = mysql_query("SELECT * FROM ".$table." WHERE deleted = '0' AND rank = '1'");
+	$result = mysql_query("SELECT * FROM ".$table." WHERE deleted = '0'");
 	$num_rows = mysql_num_rows($result);
 
 	if($num_rows < 1){
@@ -74,6 +74,7 @@ function user_id($username){
 }
 
 function secure($unsafe){
+	$unsafe = stripslashes($unsafe);
 	$safe = mysql_real_escape_string($unsafe);
 	return $safe;
 }

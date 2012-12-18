@@ -51,7 +51,7 @@ if($_GET['action'] == "add"){
 	<div class="hero-unit">
 		<ul class="breadcrumb">
 			<li><a href="?page=Hem">Start</a> <span class="divider">/</span></li>
-			<li class="active">Ny kategory</li>
+			<li class="active">Ny kategori</li>
 			<li class="pull-right"><?php if(rank() == 9){ ?><a class="btn" href="?page=Admin">Admin panel</a><?php } ?> <a class="btn btn-inverse" href="#">Mitt konto</a> <a class="btn btn-danger" href="?page=Process&action=logout">Logga ut</a></li>
 		</ul>
 		<h2>Lägg till en kategori</h2>
