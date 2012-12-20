@@ -3,7 +3,7 @@
 include('assets/database.php');
 
 function error() {
-	echo '<p class="text-error">'.$_SESSION['error'].'</p>';
+	echo '<p class="text-error">'.@$_SESSION['error'].'</p>';
 	unset_error();
 }
 

@@ -12,7 +12,7 @@ if(rank() != 9){
 		<li class="pull-right"><a class="btn" href="?page=Hem">Tillbaka</a></li>
 	</ul>
 	<?php
-	$page = secure($_GET['sub']);
+	$page = secure(@$_GET['sub']);
 
 	if($page == ''){
 		?>
