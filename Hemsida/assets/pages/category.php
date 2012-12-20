@@ -34,7 +34,7 @@ if($_GET['action'] == "view"){
 					<div id="<?php echo $row['id']; ?>" class="accordion-body collapse" style="height: 0px;">
 						<div class="accordion-inner">
 							<?php echo $row['content']; ?>
-							<hr><a class="btn btn-info" href="?page=Dokument&action=edit&id=<?php echo $row['id'] ?>&cat_id=<?php echo secure($_GET['cat_id']); ?>">Ändra</a> <a class="btn btn-danger" href="?page=Process&action=document&do=delete&cat_id=<?php echo secure($_GET['cat_id']); ?>&id=<?php echo $row['id']; ?>">Radera</a>
+							<hr><a class="btn btn-info" href="?page=Dokument&action=edit&id=<?php echo $row['id'] ?>&cat_id=<?php echo $row['cat_id']; ?>">Ändra</a> <?php if($row['share'] == 0){ ?><a class="btn btn-info" href="?page=Process&action=document&do=share&cat_id=<?php echo $row['category_id']; ?>&id=<?php echo $row['id']; ?>">Dela detta dokument</a><?php } else { ?><a class="btn btn-info" href="?page=Process&action=document&do=stop_share&cat_id=<?php echo $row['category_id']; ?>&id=<?php echo $row['id']; ?>">Sluta dela</a><?php } ?> <a class="btn btn-danger" href="?page=Process&action=document&do=delete&cat_id=<?php echo secure($_GET['cat_id']); ?>&id=<?php echo $row['id']; ?>">Radera</a>
 						</div>
 					</div>
 					<?php
