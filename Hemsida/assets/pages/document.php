@@ -68,7 +68,7 @@ if(secure($_GET['action']) == "edit"){
 			    </script>
 			    <br>
 			    <?php success(); ?>
-				<a class="btn btn-danger" href="?page=Kategori&action=view&cat_id=<?php echo secure($_GET['cat_id']); ?>">Tillbaka</a> <input class="btn btn-success" type="submit" value="Spara">
+				<a class="btn btn-danger" href="?page=Kategori&action=view&cat_id=<?php echo secure($_GET['cat_id']); ?>">Tillbaka</a> <a class="btn btn-info" href="?page=Process&action=document&do=share&cat_id=<?php echo secure($_GET['cat_id']); ?>&id=<?php echo secure($_GET['id']); ?>">Dela detta dokument</a> <input class="btn btn-success" type="submit" value="Spara">
 			</form>
 			<?php
 		}

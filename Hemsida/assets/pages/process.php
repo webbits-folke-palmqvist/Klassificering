@@ -130,6 +130,24 @@ if($action == "document"){
 			header('location: ?page=Dokument&action=edit&id='.$id.'&cat_id='.$cat_id);
 		}
 	}
+
+	if($do == "share"){
+		$id = secure($_GET['id']);
+		$cat_id = secure($_GET['cat_id']);
+		$user_id = user_id(secure($_SESSION['user']));
+		$share = random_code();
+		$share = $id."_".$share;
+
+		if($id AND $cat_id AND $share){
+			$sql = "UPDATE document SET share = '$share' WHERE id = '$id' AND user_id = '$user_id'";
+			mysql_query($sql) or die(mysql_error());
+
+			set_success("* Ditt dokument har nu blivit deltat.");
+			header('location: ?page=Dokument&action=edit&id='.$id.'&cat_id='.$cat_id);
+		} else {
+			header('location: ?page=Hem');
+		}
+	}
 }
 
 if($action == "category"){
@@ -157,11 +175,15 @@ if($action == "category"){
 
 	if($do == "delete"){
 		$cat_id = secure($_GET['cat_id']);
+		$user_id = user_id($_SESSION['user']);
 
 		if(!$cat_id){
 			header('location: ?page=Hem');
 		} else {
-			$sql = "UPDATE category SET deleted = '1' WHERE id = '$cat_id' LIMIT 1";
+			$sql = "UPDATE document SET deleted = '1' WHERE user_id = '$user_id' AND category_id = '$cat_id'";
+			mysql_query($sql) or die(mysql_error());
+
+			$sql = "UPDATE category SET deleted = '1' WHERE id = '$cat_id' AND user_id = '$user_id' LIMIT 1";
 			mysql_query($sql) or die("SQL: $sql ".mysql_error());
 
 			header('location: ?page=Hem');
@@ -175,6 +197,12 @@ if($action == "admin"){
 		if($do == "DeleteUser"){
 			$user_id = secure($_GET['UserID']);
 			if(!empty($user_id)){
+				$sql = "UPDATE document SET deleted = '1' WHERE user_id = '$user_id'";
+				mysql_query($sql) or die(mysql_error());
+
+				$sql = "UPDATE category SET deleted = '1' WHERE user_id = '$user_id'";
+				mysql_query($sql) or die(mysql_error());
+
 				$sql = "UPDATE users SET deleted = '1' WHERE id = '$user_id' LIMIT 1";
 				mysql_query($sql) or die(mysql_error());
 

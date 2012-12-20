@@ -109,7 +109,7 @@ function my_doc($doc_id){
 }
 
 function random_code(){
-	$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#€%&><";	
+	$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";	
 	$length = 32;
 
 	$size = strlen( $chars );
