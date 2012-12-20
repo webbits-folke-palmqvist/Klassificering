@@ -9,6 +9,7 @@ if(rank() != 9){
 	<ul class="breadcrumb">
 		<li><a class="btn" href="?page=Admin">Statistik</a></li>
 		<li><a class="btn" href="?page=Admin&sub=users">Alla användare</a></li>
+		<li><a class="btn" href="?page=Admin&sub=log">Visa loggen</a></li>
 		<li class="pull-right"><a class="btn" href="?page=Hem">Tillbaka</a></li>
 	</ul>
 	<?php
@@ -33,6 +34,8 @@ if(rank() != 9){
 		<?php
 	} elseif ($page == 'users'){
 		include('admin_users.php');
+	} elseif ($page == 'log'){
+		include('admin_log.php');
 	}
 	?>
 </div>
