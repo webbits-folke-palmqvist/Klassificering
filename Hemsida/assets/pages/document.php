@@ -69,6 +69,14 @@ if(secure($_GET['action']) == "edit"){
 			    <br>
 			    <?php success(); ?>
 				<a class="btn btn-danger" href="?page=Kategori&action=view&cat_id=<?php echo secure($_GET['cat_id']); ?>">Tillbaka</a> <?php if($row['share'] == 0){ ?><a class="btn btn-info" href="?page=Process&action=document&do=share&cat_id=<?php echo secure($_GET['cat_id']); ?>&id=<?php echo secure($_GET['id']); ?>">Dela detta dokument</a><?php } else { ?><a class="btn btn-info" href="?page=Process&action=document&do=stop_share&cat_id=<?php echo secure($_GET['cat_id']); ?>&id=<?php echo secure($_GET['id']); ?>">Sluta dela</a><?php } ?> <input class="btn btn-success" type="submit" value="Spara">
+				<?php if($row['share'] != 0){ ?><br><br>Dokument länk: <input onClick="SelectAll('code');" id="code" type="text" value="http://localhost/OnlineNote/Hemsida/?page=Visa&code=<?php echo $row['share']; ?>"><?php } ?>
+				<script type="text/javascript">
+				function SelectAll(id)
+					{
+					    document.getElementById(id).focus();
+					    document.getElementById(id).select();
+					}
+				</script>
 			</form>
 			<?php
 		}
