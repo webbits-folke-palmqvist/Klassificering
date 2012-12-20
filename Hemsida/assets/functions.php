@@ -1,5 +1,5 @@
 <?php
-session_start();
+@session_start();
 include('assets/database.php');
 
 function error() {
@@ -16,7 +16,7 @@ function unset_error() {
 }
 
 function success() {
-	echo '<p class="text-success">'.$_SESSION['success'].'</p>';
+	echo '<p class="text-success">'.@$_SESSION['success'].'</p>';
 	unset_success();
 }
 
