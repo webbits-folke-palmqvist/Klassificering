@@ -45,6 +45,10 @@ switch ($page) {
 		$show_page = "account";
 		$title = "Mitt konto";
 		break;
+	case 'Visa':
+		$show_page = "view";
+		$title = "Visa";
+		break;
 	default:
 		$show_page = "404";
 		$title = "404";
