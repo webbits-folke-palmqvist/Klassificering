@@ -18,9 +18,10 @@
 		$page_back = secure($_GET['p']) - 1;
 	}
 
-	$jump = $page * 10;
+	$amount = 10;
+	$jump = $page * $amount;
 
-	$query = "SELECT * FROM users WHERE rank = '1' AND deleted = 0 ORDER BY id DESC LIMIT $jump,10"; 
+	$query = "SELECT * FROM users WHERE rank = '1' AND deleted = 0 ORDER BY id DESC LIMIT $jump,$amount"; 
 	$result = mysql_query($query) or die(mysql_error());
 
 	while($row = mysql_fetch_array($result)){
@@ -37,5 +38,5 @@
 	?>
 </table>
 <?php if($page != 0){ ?><a class="btn pull-left" href="?page=Admin&sub=users&p=<?php echo $page_back; ?>">Föregånde</a><?php } ?>
-<?php if((count_rows_return("users") - $jump) > $jump){ ?><a class="btn pull-right" href="?page=Admin&sub=users&p=<?php echo $page_next; ?>">Nästa</a><?php } ?>
+<?php if((count_rows_return("users") - $amount) > $jump){ ?><a class="btn pull-right" href="?page=Admin&sub=users&p=<?php echo $page_next; ?>">Nästa</a><?php } ?>
 <br>

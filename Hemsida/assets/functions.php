@@ -56,7 +56,7 @@ function count_rows($table) {
 }
 
 function count_rows_return($table) {
-	$result = mysql_query("SELECT * FROM ".$table." WHERE deleted = '0'");
+	$result = mysql_query("SELECT * FROM ".$table." WHERE deleted = '0' AND rank = '1'");
 	$num_rows = mysql_num_rows($result);
 
 	if($num_rows < 1){
