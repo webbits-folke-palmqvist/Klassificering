@@ -21,7 +21,7 @@
 	$amount = 10;
 	$jump = $page * $amount;
 
-	$query = "SELECT * FROM users WHERE rank = '1' AND deleted = 0 ORDER BY id DESC LIMIT $jump,$amount"; 
+	$query = "SELECT * FROM users WHERE rank = '1' AND deleted = 0 ORDER BY username LIMIT $jump,$amount"; 
 	$result = mysql_query($query) or die(mysql_error());
 
 	while($row = mysql_fetch_array($result)){
