@@ -22,13 +22,16 @@ if($action == "login"){
 		
 		if($count == 1){
 			$_SESSION['user'] = strtolower($user);
+			update_log("Loggade in");
 			header('location: ?page=Hem');
 		} else {
 			set_error("* Denna användare är bannad eller raderad.");
+			update_log("Försökte logga in på bannad eller raderad användare");
 			header('location: ?page=Logga-in');
 		}
 	} else {
 		set_error("* Fel användarnamn eller lösenord.");
+		update_log("Fel användarnamn eller lösenord vid inloggning");
 		header('location: ?page=Logga-in');
 	}
 }
@@ -94,6 +97,7 @@ if($action == "document"){
 
 			if($add){
 				set_success("* Ditt dokument har sparats i databasen.");
+				update_log("La till ett dokument");
 				header('location: ?page=Kategori&action=view&cat_id='.$cat_id);
 			}
 		}
@@ -108,6 +112,8 @@ if($action == "document"){
 		} else {
 			$sql = "UPDATE document SET deleted = '1' WHERE id = '$id'";
 			mysql_query($sql) or die("SQL: $sql ".mysql_error());
+
+			update_log("Raderade ett dokument");
 
 			header('location: ?page=Kategori&action=view&cat_id='.$cat_id);
 		}
@@ -126,6 +132,8 @@ if($action == "document"){
 			$sql = "UPDATE document SET title = '$title', content = '$content' WHERE id = '$id' AND category_id = '$cat_id' AND user_id = '$user_id'";
 			mysql_query($sql) or die(mysql_error());
 
+			update_log("&Auml;ndrade ett dokument");
+
 			set_success("* Ditt dokument har sparats i databasen.");
 			header('location: ?page=Dokument&action=edit&id='.$id.'&cat_id='.$cat_id);
 		}
@@ -142,6 +150,8 @@ if($action == "document"){
 			$sql = "UPDATE document SET share = '$share' WHERE id = '$id' AND user_id = '$user_id'";
 			mysql_query($sql) or die(mysql_error());
 
+			update_log("Delade ett dokument");
+
 			set_success("* Ditt dokument har nu blivit deltat.");
 			header('location: ?page=Dokument&action=edit&id='.$id.'&cat_id='.$cat_id);
 		} else {
@@ -157,6 +167,8 @@ if($action == "document"){
 		if($id AND $cat_id){
 			$sql = "UPDATE document SET share = '0' WHERE id = '$id' AND user_id = '$user_id'";
 			mysql_query($sql) or die(mysql_error());
+
+			update_log("Slutade dela ett dokument");
 
 			set_success("* Ditt dokument delas inte längre.");
 			header('location: ?page=Dokument&action=edit&id='.$id.'&cat_id='.$cat_id);
@@ -183,6 +195,8 @@ if($action == "category"){
 			$add = mysql_query($sql);
 
 			if($add){
+				update_log("La till en kategori");
+
 				set_success("* Din kategori har laggts in i databasen.");
 				header('location: ?page=Hem');
 			}
@@ -201,6 +215,8 @@ if($action == "category"){
 
 			$sql = "UPDATE category SET deleted = '1' WHERE id = '$cat_id' AND user_id = '$user_id' LIMIT 1";
 			mysql_query($sql) or die("SQL: $sql ".mysql_error());
+
+			update_log("Raderade en kategori");
 
 			header('location: ?page=Hem');
 		}
@@ -221,6 +237,8 @@ if($action == "admin"){
 
 				$sql = "UPDATE users SET deleted = '1' WHERE id = '$user_id' LIMIT 1";
 				mysql_query($sql) or die(mysql_error());
+
+				update_log("Raderade en användare");
 
 				set_success("* Användaren är nu raderad.");
 				header('location: ?page=Admin&sub=users');

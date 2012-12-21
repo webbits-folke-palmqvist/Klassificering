@@ -55,8 +55,19 @@ function count_rows($table) {
 	}
 }
 
-function count_rows_return($table) {
+function count_rows_users_return($table) {
 	$result = mysql_query("SELECT * FROM ".$table." WHERE deleted = '0' AND rank = '1'");
+	$num_rows = mysql_num_rows($result);
+
+	if($num_rows < 1){
+		return 0;
+	} else {
+		return $num_rows;
+	}
+}
+
+function count_rows_log_return($table) {
+	$result = mysql_query("SELECT * FROM ".$table);
 	$num_rows = mysql_num_rows($result);
 
 	if($num_rows < 1){
@@ -82,6 +93,17 @@ function user_id($username){
 	$row = mysql_fetch_row($result);
 
 	return $row[0];
+}
+
+function username($id){
+	$result = mysql_query("SELECT username FROM users WHERE id = '$id' LIMIT 1");
+	$row = mysql_fetch_row($result);
+
+	if($id == 0){
+		return "Ingen användare";
+	} else {
+		return $row[0];
+	}
 }
 
 function secure($unsafe){
@@ -129,5 +151,53 @@ function random_code(){
 	}
 
 	return $str;
+}
+
+function update_log($content){
+	$user_id = user_id($_SESSION['user']);
+	$contant = secure($content);
+	$ip = $_SERVER['REMOTE_ADDR'];
+	$time = time();
+
+	if($ip == "::1"){
+		$ip = "localhost";
+	}
+
+	if(!$_SESSION['user']){
+		$user_id = 0;
+	}
+
+	$sql = "INSERT INTO log(user_id, content, ip, time)VALUES('$user_id', '$content', '$ip', '$time')";
+	$add = mysql_query($sql);
+}
+
+function daten($timestamp){
+	$get = date("d-m-y", $timestamp);
+	$now = date("d-m-y", time());
+	$yesterday = date("d-m-y", (time() - (60 * 60 * 24)));
+
+	if($get == $now){
+		$date = "Idag";
+	} elseif ($date == $yesterday) {
+		$date = "Ig&aring;r";
+	} else {
+		$date = $date_get;
+	}
+
+	return $date;
+}
+
+function timen($timestamp){
+	$get = date("d-m-y", $timestamp);
+	$now = date("d-m-y", time());
+	$yesterday = date("d-m-y", (time() - (60 * 60 * 24)));
+
+	if($get == $now){
+		$date = "Idag";
+	} elseif ($date == $yesterday) {
+		$date = "Ig&aring;r";
+	} else {
+		$date = $date_get;
+	}
 }
 ?>

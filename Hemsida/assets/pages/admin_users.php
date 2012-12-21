@@ -38,5 +38,5 @@
 	?>
 </table>
 <?php if($page != 0){ ?><a class="btn pull-left" href="?page=Admin&sub=users&p=<?php echo $page_back; ?>">Föregånde</a><?php } ?>
-<?php if((count_rows_return("users") - $amount) > $jump){ ?><a class="btn pull-right" href="?page=Admin&sub=users&p=<?php echo $page_next; ?>">Nästa</a><?php } ?>
+<?php if((count_rows_users_return("users") - $amount) > $jump){ ?><a class="btn pull-right" href="?page=Admin&sub=users&p=<?php echo $page_next; ?>">Nästa</a><?php } ?>
 <br>
