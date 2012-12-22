@@ -3,8 +3,10 @@
 include('assets/database.php');
 
 function error() {
-	echo '<p class="text-error">'.@$_SESSION['error'].'</p>';
-	unset_error();
+	if($_SESSION['error']){
+		echo '<div class="alert alert-error">'.@$_SESSION['error'].'</div>';
+		unset_error();
+	}
 }
 
 function set_error($error) {
@@ -16,8 +18,10 @@ function unset_error() {
 }
 
 function success() {
-	echo '<p class="text-success">'.@$_SESSION['success'].'</p>';
-	unset_success();
+	if($_SESSION['success']){
+		echo '<div class="alert alert-success">'.@$_SESSION['success'].'</div>';
+		unset_success();
+	}
 }
 
 function set_success($success) {
