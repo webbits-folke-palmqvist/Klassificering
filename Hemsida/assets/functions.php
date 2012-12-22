@@ -178,10 +178,10 @@ function daten($timestamp){
 
 	if($get == $now){
 		$date = "Idag";
-	} elseif ($date == $yesterday) {
+	} elseif ($get == $yesterday) {
 		$date = "Ig&aring;r";
 	} else {
-		$date = $date_get;
+		$date = $get;
 	}
 
 	return $date;
