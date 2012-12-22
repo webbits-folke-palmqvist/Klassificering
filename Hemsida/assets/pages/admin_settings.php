@@ -5,7 +5,7 @@
 		<td>Registrering</td>
 		<td style="width:250px;">
 			<div class="btn-group">
-				<a class="btn disabled" href="#">På</a>
+				<a class="btn disabled">På</a>
 				<a class="btn" href="#">Av</a>
 			</div>
 		</td>
@@ -15,7 +15,7 @@
 		<td style="width:250px;">
 			<div class="btn-group">
 				<a class="btn" href="#">På</a>
-				<a class="btn disabled" href="#">Av</a>
+				<a class="btn disabled">Av</a>
 			</div>
 		</td>
 	</tr>
