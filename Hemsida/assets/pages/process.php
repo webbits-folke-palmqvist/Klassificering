@@ -37,6 +37,7 @@ if($action == "login"){
 }
 
 if($action == "logout"){
+	update_log("Loggade ut");
 	session_destroy();
 	header('location: ?page=Logga-in');
 }
