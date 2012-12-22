@@ -10,6 +10,7 @@ if(rank() != 9){
 		<li><a class="btn" href="?page=Admin">Statistik</a></li>
 		<li><a class="btn" href="?page=Admin&sub=users">Alla användare</a></li>
 		<li><a class="btn" href="?page=Admin&sub=log">Visa loggen</a></li>
+		<li><a class="btn" href="?page=Admin&sub=settings">Inställningar</a></li>
 		<li class="pull-right"><a class="btn" href="?page=Hem">Tillbaka</a></li>
 	</ul>
 	<?php
@@ -36,6 +37,8 @@ if(rank() != 9){
 		include('admin_users.php');
 	} elseif ($page == 'log'){
 		include('admin_log.php');
+	} elseif ($page == 'settings'){
+		include('admin_settings.php');
 	}
 	?>
 </div>
