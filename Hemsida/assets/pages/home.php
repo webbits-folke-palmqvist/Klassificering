@@ -5,6 +5,9 @@
 		<li><a class="btn" href="?page=Om-oss">Om oss</a></li>
 		<li class="pull-right"><a class="btn" href="?page=Logga-in">Logga in</a></li>
 	</ul>
-	<p>Hem</p>
+	<center>
+		<h2>Välkommen till klassificering.se</h2>
+		<p>Det är bara att registrera dig, börja skriva & dela.</p>
+	</center>
 </div>
 <?php include('_footer.php'); ?>
