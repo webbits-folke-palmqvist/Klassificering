@@ -9,7 +9,7 @@ if(rank() != 9){
 	<ul class="breadcrumb">
 		<li><a class="btn" href="?page=Admin">Statistik</a></li>
 		<li><a class="btn" href="?page=Admin&sub=users">Alla användare</a></li>
-		<li><a class="btn" href="?page=Admin&sub=log">Visa loggen</a></li>
+		<li><a class="btn" href="?page=Admin&sub=log">Loggen</a></li>
 		<li><a class="btn" href="?page=Admin&sub=settings">Inställningar</a></li>
 		<li class="pull-right"><a class="btn" href="?page=Start">Tillbaka</a></li>
 	</ul>
@@ -39,6 +39,8 @@ if(rank() != 9){
 		include('admin_log.php');
 	} elseif ($page == 'settings'){
 		include('admin_settings.php');
+	} elseif ($page == 'pages'){
+		include('admin_pages.php');
 	}
 	?>
 </div>
