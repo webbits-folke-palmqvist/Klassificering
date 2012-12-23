@@ -248,7 +248,7 @@ if($action == "admin"){
 			}
 		}
 
-		if($do == "UpdateSetting"){
+		if($do == "UpdateSettings"){
 			$id = secure($_GET['id']);
 			$onoroff = secure($_GET['onoroff']);
 

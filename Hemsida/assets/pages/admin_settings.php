@@ -1,4 +1,5 @@
 <center><h2>Denna sida är ej fungerande än.</h2></center>
+<?php success(); ?>
 <center><p><strong>Allmänt</strong></p></center>
 <table class="table table-bordered">
 	<?php
@@ -14,13 +15,13 @@
 					<?php
 					if($row['onoroff'] == 0){ 
 						?>
-						<a class="btn" href="#">På</a>
+						<a class="btn" href="?page=Process&action=admin&do=UpdateSettings&id=<?php echo $row['id']; ?>&onoroff=1">På</a>
 						<a class="btn disabled">Av</a>
 						<?php
 					} elseif ($row['onoroff'] == 1) {
 						?>
 						<a class="btn disabled">På</a>
-						<a class="btn" href="#">Av</a>
+						<a class="btn" href="?page=Process&action=admin&do=UpdateSettings&id=<?php echo $row['id']; ?>&onoroff=0">Av</a>
 						<?php
 					}
 					?>
@@ -46,13 +47,13 @@
 					<?php
 					if($row['onoroff'] == 0){ 
 						?>
-						<a class="btn" href="#">På</a>
+						<a class="btn" href="?page=Process&action=admin&do=UpdateSettings&id=<?php echo $row['id']; ?>&onoroff=1">På</a>
 						<a class="btn disabled">Av</a>
 						<?php
 					} elseif ($row['onoroff'] == 1) {
 						?>
 						<a class="btn disabled">På</a>
-						<a class="btn" href="#">Av</a>
+						<a class="btn" href="?page=Process&action=admin&do=UpdateSettings&id=<?php echo $row['id']; ?>&onoroff=0">Av</a>
 						<?php
 					}
 					?>
