@@ -90,7 +90,7 @@ if($action == "document"){
 
 			$user_id = user_id($user);
 			$cat_id = secure($_GET['cat_id']);
-			$title = secure($_POST['title']);
+			$title = htmlspecialchars(secure($_POST['title']), ENT_QUOTES, 'UTF-8');
 			$content = secure($_POST['content']);
 
 			$sql = "INSERT INTO document(category_id, user_id, title, content)VALUES('$cat_id', '$user_id', '$title', '$content')";
@@ -123,7 +123,7 @@ if($action == "document"){
 	if($do == "edit"){
 		$id = secure($_GET['id']);
 		$cat_id = secure($_GET['cat_id']);
-		$title = secure($_POST['title']);
+		$title = htmlspecialchars(secure($_POST['title']), ENT_QUOTES, 'UTF-8');
 		$content = secure($_POST['content']);
 		$user_id = user_id(secure($_SESSION['user']));
 
@@ -189,7 +189,7 @@ if($action == "category"){
 			$user = $_SESSION['user'];
 
 			$user_id = user_id($user);
-			$title = secure($_POST['title']);
+			$title = htmlspecialchars(secure($_POST['title']), ENT_QUOTES, 'UTF-8');
 
 
 			$sql = "INSERT INTO category(user_id, name, deleted)VALUES('$user_id', '$title', '0')";
