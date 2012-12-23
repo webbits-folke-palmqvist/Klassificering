@@ -7,6 +7,6 @@
 	<input name="password" type="password" class="input-block-level" placeholder="Lösenord">
 	<button class="btn btn-large btn-success btn-block" type="submit">Logga in</button>
 	<hr>
-	<center>Inte medlem? <a href="?page=Registrera">Registrera dig här</a></center>
+	<center>Inte medlem? <a href="?page=Registrera">Registrera dig här</a><br><br><a class="btn" href="?page=Hem">Tillbaka till startsidan</a></center>
 </form>
 <?php include('_footer.php'); ?>
