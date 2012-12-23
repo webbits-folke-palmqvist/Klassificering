@@ -1,4 +1,16 @@
 <center><h2>Denna sida är ej fungerande än.</h2></center>
+<center><p><strong>Sidan</strong></p></center>
+<table class="table table-bordered">
+	<tr>
+		<td>Nere för underhåll</td>
+		<td style="width:250px;">
+			<div class="btn-group">
+				<a class="btn" href="#">På</a>
+				<a class="btn disabled">Av</a>
+			</div>
+		</td>
+	</tr>
+</table>
 <center><p><strong>Registrering</strong></p></center>
 <table class="table table-bordered">
 	<tr>
