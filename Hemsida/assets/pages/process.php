@@ -246,9 +246,26 @@ if($action == "admin"){
 			} else {
 				header('location: ?page=Start');
 			}
-		} else {
-			header('location: ?page=Start');
 		}
+
+		if($do == "UpdateSetting"){
+			$id = secure($_GET['id']);
+			$onoroff = secure($_GET['onoroff']);
+
+			if($id){
+				$sql = "UPDATE settings SET onoroff = '$onoroff' WHERE id = '$id'";
+				mysql_query($sql) or die(mysql_error());
+
+				update_log("Uppdaterade inställningarna");
+
+				set_success("* Ändrigarna är nu sparade.");
+				header('location: ?page=Admin&sub=settings');
+			} else {
+				header('location: ?page=Admin');
+			}
+		}
+	} else {
+		header('location: ?page=Start');
 	}
 }
 ?>
