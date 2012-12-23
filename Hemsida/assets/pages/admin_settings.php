@@ -1,4 +1,3 @@
-<center><h2>Denna sida är ej fungerande än.</h2></center>
 <?php success(); ?>
 <center><p><strong>Allmänt</strong></p></center>
 <table class="table table-bordered">
