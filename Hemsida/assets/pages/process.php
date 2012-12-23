@@ -23,7 +23,7 @@ if($action == "login"){
 		if($count == 1){
 			$_SESSION['user'] = strtolower($user);
 			update_log("Loggade in");
-			header('location: ?page=Hem');
+			header('location: ?page=Start');
 		} else {
 			set_error("* Denna användare är bannad eller raderad.");
 			update_log("Försökte logga in på bannad eller raderad användare");
@@ -109,7 +109,7 @@ if($action == "document"){
 		$cat_id = secure($_GET['cat_id']);
 
 		if(!$id OR !$cat_id){
-			header('location: ?page=Hem');
+			header('location: ?page=Start');
 		} else {
 			$sql = "UPDATE document SET deleted = '1' WHERE id = '$id'";
 			mysql_query($sql) or die("SQL: $sql ".mysql_error());
@@ -128,7 +128,7 @@ if($action == "document"){
 		$user_id = user_id(secure($_SESSION['user']));
 
 		if(!$id OR !$cat_id OR !$title OR !$content){
-			header('location: ?page=Hem');
+			header('location: ?page=Start');
 		} else {
 			$sql = "UPDATE document SET title = '$title', content = '$content' WHERE id = '$id' AND category_id = '$cat_id' AND user_id = '$user_id'";
 			mysql_query($sql) or die(mysql_error());
@@ -156,7 +156,7 @@ if($action == "document"){
 			set_success("* Ditt dokument har nu blivit deltat.");
 			header('location: ?page=Dokument&action=edit&id='.$id.'&cat_id='.$cat_id);
 		} else {
-			header('location: ?page=Hem');
+			header('location: ?page=Start');
 		}
 	}
 
@@ -174,7 +174,7 @@ if($action == "document"){
 			set_success("* Ditt dokument delas inte längre.");
 			header('location: ?page=Dokument&action=edit&id='.$id.'&cat_id='.$cat_id);
 		} else {
-			header('location: ?page=Hem');
+			header('location: ?page=Start');
 		}
 	}
 }
@@ -199,7 +199,7 @@ if($action == "category"){
 				update_log("La till en kategori");
 
 				set_success("* Din kategori har laggts in i databasen.");
-				header('location: ?page=Hem');
+				header('location: ?page=Start');
 			}
 		}
 	}
@@ -209,7 +209,7 @@ if($action == "category"){
 		$user_id = user_id($_SESSION['user']);
 
 		if(!$cat_id){
-			header('location: ?page=Hem');
+			header('location: ?page=Start');
 		} else {
 			$sql = "UPDATE document SET deleted = '1' WHERE user_id = '$user_id' AND category_id = '$cat_id'";
 			mysql_query($sql) or die(mysql_error());
@@ -219,7 +219,7 @@ if($action == "category"){
 
 			update_log("Raderade en kategori");
 
-			header('location: ?page=Hem');
+			header('location: ?page=Start');
 		}
 	}
 }
@@ -244,10 +244,10 @@ if($action == "admin"){
 				set_success("* Användaren är nu raderad.");
 				header('location: ?page=Admin&sub=users');
 			} else {
-				header('location: ?page=Hem');
+				header('location: ?page=Start');
 			}
 		} else {
-			header('location: ?page=Hem');
+			header('location: ?page=Start');
 		}
 	}
 }

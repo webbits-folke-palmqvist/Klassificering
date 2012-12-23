@@ -130,7 +130,7 @@ function my_cat($cat_id){
 	$num_rows = mysql_num_rows($result);
 
 	if($num_rows == 0){
-		header('location: ?page=Hem');
+		header('location: ?page=Start');
 	}
 }
 
@@ -141,7 +141,7 @@ function my_doc($doc_id){
 	$num_rows = mysql_num_rows($result);
 
 	if($num_rows == 0){
-		header('location: ?page=Hem');
+		header('location: ?page=Start');
 	}
 }
 

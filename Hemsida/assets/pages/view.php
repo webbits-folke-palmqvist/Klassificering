@@ -17,7 +17,7 @@ if($num_rows == 1){
 	</div>
 	<?php
 } else {
-	header('location: ?page=Hem');
+	header('location: ?page=Start');
 }
 
 include('_footer.php');

@@ -3,7 +3,7 @@
 	<center>
 		<h1>404</h1>
 		<h3>Felaktig länk?</h3>
-		<h5><a href="?page=Hem">Gå tillbaka</a></h5>
+		<h5><a href="?page=Start">Gå tillbaka</a></h5>
 	</center>
 </div>
 <?php include('_footer.php'); ?>

@@ -6,7 +6,7 @@ if(secure($_GET['action']) == "add"){
 	?>
 	<div class="hero-unit">
 		<ul class="breadcrumb">
-			<li><a href="?page=Hem">Start</a> <span class="divider">/</span></li>
+			<li><a href="?page=Start">Start</a> <span class="divider">/</span></li>
 			<li><a href="?page=Kategori&action=view&cat_id=<?php echo secure($_GET['cat_id']); ?>"><?php echo cat_name(secure($_GET['cat_id'])); ?></a> <span class="divider">/</span></li>
 			<li class="active">Nytt dokument</li>
 			<li class="pull-right"><?php if(rank() == 9){ ?><a class="btn" href="?page=Admin">Admin panel</a><?php } ?> <a class="btn btn-inverse" href="?page=Mitt-konto">Mitt konto</a> <a class="btn btn-danger" href="?page=Process&action=logout">Logga ut</a></li>
@@ -38,7 +38,7 @@ if(secure($_GET['action']) == "edit"){
 	?>
 	<div class="hero-unit">
 		<ul class="breadcrumb">
-			<li><a href="?page=Hem">Start</a> <span class="divider">/</span></li>
+			<li><a href="?page=Start">Start</a> <span class="divider">/</span></li>
 			<li><a href="?page=Kategori&action=view&cat_id=<?php echo secure($_GET['cat_id']); ?>"><?php echo cat_name(secure($_GET['cat_id'])); ?></a> <span class="divider">/</span></li>
 			<li class="active">Ändra</li>
 			<li class="pull-right"><?php if(rank() == 9){ ?><a class="btn" href="?page=Admin">Admin panel</a><?php } ?> <a class="btn btn-inverse" href="#">Mitt konto</a> <a class="btn btn-danger" href="?page=Process&action=logout">Logga ut</a></li>

@@ -2,7 +2,7 @@
 include('_top.php');
 login();
 if(rank() != 9){
-	header('location: ?page=Hem');
+	header('location: ?page=Start');
 }
 ?>
 <div class="hero-unit">
@@ -11,7 +11,7 @@ if(rank() != 9){
 		<li><a class="btn" href="?page=Admin&sub=users">Alla användare</a></li>
 		<li><a class="btn" href="?page=Admin&sub=log">Visa loggen</a></li>
 		<li><a class="btn" href="?page=Admin&sub=settings">Inställningar</a></li>
-		<li class="pull-right"><a class="btn" href="?page=Hem">Tillbaka</a></li>
+		<li class="pull-right"><a class="btn" href="?page=Start">Tillbaka</a></li>
 	</ul>
 	<?php
 	$page = secure(@$_GET['sub']);

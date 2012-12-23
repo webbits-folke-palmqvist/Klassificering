@@ -9,6 +9,10 @@ switch ($page) {
 		$show_page = "home";
 		$title = "Hem";
 		break;
+	case 'Start':
+		$show_page = "start";
+		$title = "Start";
+		break;
 	case 'Om-oss':
 		$show_page = "about";
 		$title = "Om oss";

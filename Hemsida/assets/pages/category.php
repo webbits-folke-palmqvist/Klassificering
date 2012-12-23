@@ -7,13 +7,13 @@ $user_id = user_id($_SESSION['user']);
 
 if($_GET['action'] == "view"){
 	if(!$cat_id){
-		header('location: ?page=Hem');
+		header('location: ?page=Start');
 	}
 	my_cat(secure($_GET['cat_id']));
 	?>
 	<div class="hero-unit">
 		<ul class="breadcrumb">
-			<li><a href="?page=Hem">Start</a> <span class="divider">/</span></li>
+			<li><a href="?page=Start">Start</a> <span class="divider">/</span></li>
 			<li class="active"><?php echo cat_name($cat_id); ?></li>
 			<li class="pull-right"><?php if(rank() == 9){ ?><a class="btn" href="?page=Admin">Admin panel</a><?php } ?> <a class="btn btn-inverse" href="?page=Mitt-konto">Mitt konto</a> <a class="btn btn-danger" href="?page=Process&action=logout">Logga ut</a></li>
 		</ul>
@@ -50,7 +50,7 @@ if($_GET['action'] == "add"){
 	?>
 	<div class="hero-unit">
 		<ul class="breadcrumb">
-			<li><a href="?page=Hem">Start</a> <span class="divider">/</span></li>
+			<li><a href="?page=Start">Start</a> <span class="divider">/</span></li>
 			<li class="active">Ny kategori</li>
 			<li class="pull-right"><?php if(rank() == 9){ ?><a class="btn" href="?page=Admin">Admin panel</a><?php } ?> <a class="btn btn-inverse" href="#">Mitt konto</a> <a class="btn btn-danger" href="?page=Process&action=logout">Logga ut</a></li>
 		</ul>
@@ -59,7 +59,7 @@ if($_GET['action'] == "add"){
 		<form action="?page=Process&action=category&do=add" method="POST">
 			<input class="input-fill" type="text" name="title" placeholder="Titel"><br />
 		    <br>
-			<a class="btn btn-danger" href="?page=Hem">Avbryt</a> <input class="btn btn-success" type="submit" value="Spara">
+			<a class="btn btn-danger" href="?page=Start">Avbryt</a> <input class="btn btn-success" type="submit" value="Spara">
 		</form>
 	</div>
 	<?php
