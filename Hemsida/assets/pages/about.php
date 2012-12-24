@@ -3,7 +3,10 @@
 	<ul class="breadcrumb">
 		<li><a class="btn" href="?page=Hem">Hem</a></li>
 		<li><a class="btn" href="?page=Om-oss">Om oss</a></li>
-		<li class="pull-right"><a class="btn" href="?page=Logga-in">Logga in</a></li>
+		<li class="pull-right">
+			<a class="btn" href="?page=Logga-in">Logga in</a>
+			<a class="btn" href="?page=Registrera">Registrera dig</a>
+		</li>
 	</ul>
 	<center><h2>Om Klassificering.se</h2></center>
 	<h4>Vad är klassificering.se?</h4>
