@@ -33,7 +33,7 @@ function unset_success() {
 }
 
 function login(){
-	if(!$_SESSION['user'] OR $_SESSION['user'] == 0) {
+	if(!$_SESSION['user'] OR $_SESSION['user'] == "") {
 		header('location: ?page=Logga-in');
 	}
 }
