@@ -204,4 +204,19 @@ function timen($timestamp){
 		$date = $date_get;
 	}
 }
+
+function GetSetting($id){
+	$result = mysql_query("SELECT onoroff FROM settings WHERE id = '$id' LIMIT 1");
+	$row = mysql_fetch_row($result);
+
+	return $row[0];
+}
+
+function SiteDown(){
+	if(GetSetting(1) == 1){
+		if(rank() != 9){
+			header('location: ?page=Sidan-nere');	
+		}
+	}
+}
 ?>

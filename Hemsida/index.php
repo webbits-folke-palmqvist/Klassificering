@@ -53,6 +53,10 @@ switch ($page) {
 		$show_page = "view";
 		$title = "Visa";
 		break;
+	case 'Sidan-nere':
+		$show_page = "sitedown";
+		$title = "Sidan nere";
+		break;
 	default:
 		$show_page = "404";
 		$title = "404";

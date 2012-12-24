@@ -3,6 +3,10 @@ ob_start();
 session_start();
 include('assets/database.php');
 include('assets/functions.php');
+
+if(@$_GET['page'] != "Sidan-nere"){
+	SiteDown();
+}
 ?>
 <html>
 	<head>
